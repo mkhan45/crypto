@@ -1,50 +1,52 @@
-in_str = "BARERTDTUTOREHJHTLUWAEUESIGIKELSOGHNSAIUFHYDISENTTOOTTTWTNWIAIHHDBSNS"
-cols = 9
+import sys
+
+# in_str = "BARERTDTUTOREHJHTLUWAEUESIGIKELSOGHNSAIUFHYDISENTTOOTTTWTNWIAIHHDBSNS"
+# in_str = "IHOSTSMTEFIHTEWBTTEOSAEIWWFSSMAOTTTESRI"
+in_str = ''.join(filter(lambda ch: ch != ' ', sys.argv[1])).upper()
+print(in_str)
+# cols = int(sys.argv[2])
+min_cols, max_cols = [int(n) for n in sys.argv[2:4]]
+if len(sys.argv) == 5:
+   keyword = sys.argv[4].upper()
+else:
+   keyword = ''
 
 strlen = len(in_str)
+print(strlen)
 
-rows = strlen//cols
+for cols in range(min_cols, max_cols):
+   rows = strlen//cols
 
-num_highrows = 0
-for i in range(1, cols):
-   if (rows + 1) * i + (rows * (cols - i)) == strlen:
-      num_highrows = i
+   num_highrows = 0
+   for i in range(1, cols):
+      if (rows + 1) * i + (rows * (cols - i)) == len(in_str):
+         num_highrows = i
 
-if num_highrows == 0:
-   print("Error")
+   # print('\n'.join([in_str[i : (rows + 1) * num_highrows : rows + 1] + in_str[(rows + 1) * num_highrows + i: : rows] for i in range(rows + 1)])[:-(cols - num_highrows - 1)] + "\n")
 
+   sorted_key = ''.join(sorted(keyword))
 
-out_str = ""
+   map = {keyword.find(ch) : sorted_key.find(ch) for ch in keyword}
+   # print(map)
+   # print(map.values())
 
-# out_str += in_str[:(rows + 1) * num_highrows :rows + 1]
-out_str += in_str[(rows + 1) * num_highrows : : rows]
+   table = [in_str[i : (rows + 1) * num_highrows : rows + 1] + in_str[(rows + 1) * num_highrows + i: : rows] for i in range(rows + 1)]
 
-# out_str += in_str[cols : (rows + 1) * num_highrows * 2 : cols + rows + 1]
+   print('\n'.join(table))
 
-# for j in range(cols - num_highrows):
-#    for i in range(num_highrows):
-#       out_str += in_str[j * cols + (rows + 1) * i]
+   if len(keyword) != 0:
+      print(sorted_key + "\n")
+      outstr = '\n'
+      for row in table:
+         # map is sorted
+         try:
+            outstr += ''.join([row[i] for i in map.values()]) + "\n"
+         except:
+            pass
 
-# # str2 = ""
-# # # print(in_str[rows * (cols - num_highrows + 1): :rows + 1])
-# # for i in range((rows + 1) * (num_highrows), strlen, rows):
-# #    # print(in_str[i:i+3])
-# #    str2 += in_str[i:i + (cols - num_highrows + 1)]
-# str2 = ""
-# for j in range(num_highrows):
-#    for i in range(cols - num_highrows):
-#       str2 += in_str[j * cols + num_highrows + (rows - 1) * i - 1]
+      print(outstr + "\n")
 
-# print(str2)
-# for i in range(cols - num_highrows + 1):
-#    print(str2[i + rows * i : i + rows*i + 3 :rows])
-# for j in range(rows * (cols - num_highrows + 1), strlen , ):
-#    # print(j * cols)
-#    # out_str += in_str[j * : cols - num_highrows]
-#    print(j)
-      
-      # out_str += in_str[j * cols + (rows + 1) + rows * i]
-   # print(in_str[i * (rows + 1) :: rows + 1])
-   # out_str += in_str[i * (rows + 1) : : rows + 1]
+# for i in range(rows + 1):
+#    out_str += in_str[i : (rows + 1) * num_highrows : rows + 1]
+#    out_str += in_str[(rows + 1) * num_highrows + i: : rows]
 
-print(out_str)
