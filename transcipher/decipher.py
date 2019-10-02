@@ -22,31 +22,33 @@ for cols in range(min_cols, max_cols):
       if (rows + 1) * i + (rows * (cols - i)) == len(in_str):
          num_highrows = i
 
-   # print('\n'.join([in_str[i : (rows + 1) * num_highrows : rows + 1] + in_str[(rows + 1) * num_highrows + i: : rows] for i in range(rows + 1)])[:-(cols - num_highrows - 1)] + "\n")
+   print('\n'.join([in_str[i : (rows + 1) * num_highrows : rows + 1] + in_str[(rows + 1) * num_highrows + i: : rows] for i in range(rows + 1)])[:-(cols - num_highrows - 1)] + "\n")
 
-   sorted_key = ''.join(sorted(keyword))
+   # sorted_key = ''.join(sorted(keyword))
 
-   map = {keyword.find(ch) : sorted_key.find(ch) for ch in keyword}
-   # print(map)
-   # print(map.values())
+   # map = {keyword.find(ch) : sorted_key.find(ch) for ch in keyword}
+   # # print(map)
+   # # print(map.values())
 
-   table = [in_str[i : (rows + 1) * num_highrows : rows + 1] + in_str[(rows + 1) * num_highrows + i: : rows] for i in range(rows + 1)]
+   # table = [in_str[i : (rows + 1) * num_highrows : rows + 1] + in_str[(rows + 1) * num_highrows + i: : rows] for i in range(rows + 1)]
 
-   print('\n'.join(table))
+   # print(sorted_key + '\n')
+   # print('\n'.join(table))
 
-   if len(keyword) != 0:
-      print(sorted_key + "\n")
-      outstr = '\n'
-      for row in table:
-         # map is sorted
-         try:
-            outstr += ''.join([row[i] for i in map.values()]) + "\n"
-         except:
-            pass
+   # if len(keyword) != 0:
+   #    print('\n' + sorted_key + "\n")
+   #    outstr = ''
+   #    for row in table[:-1]:
+   #       # map is sorted
+   #       try:
+   #          outstr += ''.join([row[i] for i in map.values()]) + "\n"
+   #       except:
+   #          pass
 
-      print(outstr + "\n")
+   #    print(outstr)
 
-# for i in range(rows + 1):
-#    out_str += in_str[i : (rows + 1) * num_highrows : rows + 1]
-#    out_str += in_str[(rows + 1) * num_highrows + i: : rows]
+   #    print(outstr.replace('\n', ''))
+# # for i in range(rows + 1):
+# #    out_str += in_str[i : (rows + 1) * num_highrows : rows + 1]
+# #    out_str += in_str[(rows + 1) * num_highrows + i: : rows]
 
