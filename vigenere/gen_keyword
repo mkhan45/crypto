@@ -1,0 +1,6 @@
+#!/bin/python
+import sys
+from tools import alphabet, l_map, inv_alpha
+ciphertext, plaintext = sys.argv[1:]
+
+print(''.join(inv_alpha[(l_map[c_ch] - l_map[p_ch]) % 26] for p_ch, c_ch in zip(plaintext, ciphertext)))

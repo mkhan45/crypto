@@ -16,7 +16,6 @@ for c in filter(lambda ch: ch not in keyword, alpha):
     decode[alpha[cnt]] = c
     cnt += 1
 
-
 if not en:
     encode = {v : k for k, v in decode.items()}
     # print(encode)

@@ -1,0 +1,8 @@
+#!/bin/python
+import sys
+from tools import alphabet, l_map, inv_alpha
+keyword, plaintext = sys.argv[1:]
+
+keyword = (keyword * (len(plaintext) // len(keyword) + 1))[:len(plaintext)]
+
+print(''.join(inv_alpha[(l_map[ch] + l_map[keyword[i]]) % 26] for i, ch in enumerate(plaintext)))
