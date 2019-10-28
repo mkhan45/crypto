@@ -1,0 +1,14 @@
+#!/bin/python
+import sys
+import math
+
+def isprime_opt(n: int, primes=[2, 3, 5]):
+   for i in filter(lambda i: i in primes or isprime_opt(i, primes=primes), range(3, int(math.sqrt(n)) + 1, 2)):
+      if i not in primes:
+         primes.append(i)
+      if n % i == 0:
+         primes.append(n)
+         return False
+   return True
+
+print(isprime_opt(int(sys.argv[1])))
