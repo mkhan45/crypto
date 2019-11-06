@@ -1,0 +1,5 @@
+#!/bin/python
+import sys
+from affine import encrypt
+
+print(encrypt(sys.argv[1], int(sys.argv[2]), int(sys.argv[3])))
